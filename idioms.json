@@ -1,0 +1,122 @@
+[
+  {
+    "id": "obsaa-annan-goromsaa-dhuga",
+    "oromo": "Obsaan aannan goromsaa dhuga.",
+    "phonetic": "Ob-saan aa-nnan go-rom-saa dhu-ga",
+    "category": "Patience & Perseverance",
+    "englishEquivalent": "Patience is a virtue; good things come to those who wait.",
+    "literalTranslation": "The patient person drinks the milk of a heifer (a young cow that has not yet given birth).",
+    "culturalContext": "Rooted in Oromo pastoral wisdom: raising a young calf into a milking cow takes seasons of care. Elders use this proverb to encourage calm endurance during long journeys or hardship.",
+    "example": {
+      "oromo": "Hin jarjarin, obsaan aannan goromsaa dhuga.",
+      "english": "Do not rush; with patience you will drink the heifer's milk."
+    },
+    "dialect": "Pan-Oromo",
+    "artwork": "pastoral-cattle"
+  },
+  {
+    "id": "harki-tokko-hin-dhiqatu",
+    "oromo": "Harki tokko hin dhiqatu.",
+    "phonetic": "Har-ki tok-ko hin dhi-qa-tu",
+    "category": "Community & Ubuntu",
+    "englishEquivalent": "Many hands make light work / No one succeeds alone.",
+    "literalTranslation": "One hand cannot wash itself.",
+    "culturalContext": "Reflects the communal spirit of Daboo (mutual aid labor) and Jigii. In Oromo social ethics, mutual support is the foundation of survival and dignity.",
+    "example": {
+      "oromo": "Wal haa gargaarru, harki tokko hin dhiqatu.",
+      "english": "Let us help one another; a single hand cannot wash itself."
+    },
+    "dialect": "Pan-Oromo",
+    "artwork": "community-hands"
+  },
+  {
+    "id": "bakka-ciisanitti-ilmi-namaa-hin-hafuu",
+    "oromo": "Suuta deeman suuta galu.",
+    "phonetic": "Suu-ta dee-man suu-ta ga-lu",
+    "category": "Wisdom & Strategy",
+    "englishEquivalent": "Slow and steady wins the race.",
+    "literalTranslation": "Those who walk steadily arrive safely home.",
+    "culturalContext": "Cautions against reckless haste. In long highland travels across Oromia, pacing oneself ensures safe arrival before nightfall.",
+    "example": {
+      "oromo": "Hojii kee of eeggannoon hojjedhu; suuta deeman suuta galu.",
+      "english": "Do your work carefully; those who walk steadily arrive safely."
+    },
+    "dialect": "Shawaa & Wallagga",
+    "artwork": "mountain-path"
+  },
+  {
+    "id": "kan-beekan-dubbachuun-warqee",
+    "oromo": "Dubbiin beekaa gabaabaadha.",
+    "phonetic": "Dub-biin bee-kaa ga-baa-baa-dhaa",
+    "category": "Communication & Safuu",
+    "englishEquivalent": "Brevity is the soul of wit / Wisdom speaks concisely.",
+    "literalTranslation": "The speech of a wise person is brief.",
+    "culturalContext": "Under the Gadaa assembly tradition (Caffee), respected orators speak with measured clarity, avoiding boastful or empty words.",
+    "example": {
+      "oromo": "Yaada kee ifatti dhiyeessi; dubbiin beekaa gabaabaadha.",
+      "english": "Present your idea clearly; a wise person's words are brief."
+    },
+    "dialect": "Borana & Guji",
+    "artwork": "odaa-assembly"
+  },
+  {
+    "id": "namni-tokko-muka-tokko",
+    "oromo": "Muki tokko bosona hin ta'u.",
+    "phonetic": "Mu-ki tok-ko bo-so-na hin ta-u",
+    "category": "Unity & Leadership",
+    "englishEquivalent": "One tree does not make a forest / Unity is strength.",
+    "literalTranslation": "A single tree does not become a forest.",
+    "culturalContext": "Reminding leaders and youth alike that collective vision and solidarity create lasting shade and resilience.",
+    "example": {
+      "oromo": "Tokkummaan haa dhaabbannu; muki tokko bosona hin ta'u.",
+      "english": "Let us stand in unity; one tree cannot make a forest."
+    },
+    "dialect": "Hararghe & Arsi",
+    "artwork": "odaa-assembly"
+  },
+  {
+    "id": "bishaaniif-ibiddi-wal-hin-jaallatan",
+    "oromo": "Bishaan darbe hin waraabamu.",
+    "phonetic": "Bi-shaan dar-be hin wa-raa-ba-mu",
+    "category": "Time & Opportunity",
+    "englishEquivalent": "Don't cry over spilt milk / Missed opportunities don't return.",
+    "literalTranslation": "Water that has already flowed past cannot be scooped up.",
+    "culturalContext": "Encourages forward-looking resilience and making wise decisions in the present moment rather than dwelling on past regrets.",
+    "example": {
+      "oromo": "Carraa har'aa fayyadami; bishaan darbe hin waraabamu.",
+      "english": "Seize today's opportunity; water that has flowed past cannot be scooped."
+    },
+    "dialect": "Pan-Oromo",
+    "artwork": "river-flow"
+  },
+  {
+    "id": "garaa-laafessi-hin-duroomu",
+    "oromo": "Arjaan waaqatti dhiyaata.",
+    "phonetic": "Ar-jaan waa-qat-ti dhi-yaa-ta",
+    "category": "Hospitality & Generosity",
+    "englishEquivalent": "Generosity brings blessings and closeness to the Divine.",
+    "literalTranslation": "A generous person is close to Waaqa (God).",
+    "culturalContext": "Hospitality (Keessummeessuu) is a sacred pillar of Oromo culture—welcoming travelers and strangers with buna (coffee) and food brings communal honor.",
+    "example": {
+      "oromo": "Keessummaa simadhu; arjaan waaqatti dhiyaata.",
+      "english": "Welcome the guest; a generous person is close to God."
+    },
+    "dialect": "Pan-Oromo",
+    "artwork": "coffee-ceremony"
+  },
+  {
+    "id": "barumsi-ifa-jireenyaati",
+    "oromo": "Barumsi ifa jireenyaati.",
+    "phonetic": "Ba-rum-si i-fa ji-ree-nyaa-ti",
+    "category": "Knowledge & Growth",
+    "englishEquivalent": "Knowledge is power / Education is the light of life.",
+    "literalTranslation": "Learning is the light of life.",
+    "culturalContext": "Celebrates lifelong learning, storytelling across generations, and passing cultural literacy from elders to diaspora and urban youth.",
+    "example": {
+      "oromo": "Afaan kee fi aadaa kee baradhu; barumsi ifa jireenyaati.",
+      "english": "Learn your language and culture; education is the light of life."
+    },
+    "dialect": "Pan-Oromo",
+    "artwork": "sunrise-horizon"
+  }
+]
