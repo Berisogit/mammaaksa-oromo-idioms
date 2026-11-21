@@ -1,0 +1,26 @@
+{
+  "name": "Mammaaksa — Oromo Idioms & Cultural Explorer",
+  "short_name": "Mammaaksa",
+  "description": "Interactive Oromo idioms (mammaaksa) with English equivalents, cultural context, and offline learning cards.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FAF6F0",
+  "theme_color": "#4E342E",
+  "categories": ["education", "books", "reference"],
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
