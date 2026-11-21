@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Mammaaksa — Oromo Idioms & Cultural Explorer</title>
+  <meta name="description" content="Interactive Material 3 flashcard explorer for Oromo idioms (Mammaaksa) and their English equivalents." />
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#4E342E" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Mammaaksa" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <style>
+    :root {
+      --md-sys-color-primary: #8D4925;
+      --md-sys-color-on-primary: #FFFFFF;
+      --md-sys-color-primary-container: #FFDBCA;
+      --md-sys-color-on-primary-container: #331100;
+      --md-sys-color-secondary: #2E5A44;
+      --md-sys-color-on-secondary: #FFFFFF;
+      --md-sys-color-secondary-container: #B5F1CE;
+      --md-sys-color-on-secondary-container: #002112;
+      --md-sys-color-tertiary: #7A5900;
+      --md-sys-color-tertiary-container: #FFDEA1;
+      --md-sys-color-background: #FAF6F0;
+      --md-sys-color-surface: #FFFDF9;
+      --md-sys-color-surface-variant: #F2E5DC;
+      --md-sys-color-on-surface: #221A15;
+      --md-sys-color-on-surface-variant: #52443C;
+      --md-sys-color-outline: #85746B;
+      --md-sys-color-outline-variant: #D7C3B8;
+      --card-shadow: 0 12px 32px rgba(78, 52, 46, 0.14);
+      --zoom-scale: 1;
+    }
+
+    [data-theme="dark"] {
+      --md-sys-color-primary: #FFB690;
+      --md-sys-color-on-primary: #542100;
+      --md-sys-color-primary-container: #713610;
+      --md-sys-color-on-primary-container: #FFDBCA;
+      --md-sys-color-secondary: #9AD4B3;
+      --md-sys-color-on-secondary: #003823;
+      --md-sys-color-secondary-container: #154E35;
+      --md-sys-color-on-secondary-container: #B5F1CE;
+      --md-sys-color-tertiary: #F3BF48;
+      --md-sys-color-tertiary-container: #5C4300;
+      --md-sys-color-background: #19120E;
+      --md-sys-color-surface: #221A15;
+      --md-sys-color-surface-variant: #372D27;
+      --md-sys-color-on-surface: #EFE0D8;
+      --md-sys-color-on-surface-variant: #D7C3B8;
+      --md-sys-color-outline: #9F8D83;
+      --md-sys-color-outline-variant: #52443C;
+      --card-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--md-sys-color-background);
+      color: var(--md-sys-color-on-surface);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    header {
+      background: var(--md-sys-color-surface);
+      border-bottom: 1px solid var(--md-sys-color-outline-variant);
+      padding: 12px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .brand-title h1 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .brand-title span {
+      font-size: 0.75rem;
+      color: var(--md-sys-color-on-surface-variant);
+      display: block;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .icon-btn {
+      background: var(--md-sys-color-surface-variant);
+      color: var(--md-sys-color-on-surface);
+      border: none;
+      border-radius: 999px;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .icon-btn:active {
+      transform: scale(0.93);
+    }
+
+    .controls-bar {
+      max-width: 720px;
+      width: 100%;
+      margin: 12px auto 0;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 11px 16px 11px 40px;
+      border-radius: 999px;
+      border: 1px solid var(--md-sys-color-outline-variant);
+      background: var(--md-sys-color-surface);
+      color: var(--md-sys-color-on-surface);
+      font-size: 0.92rem;
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: var(--md-sys-color-primary);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: 0.95rem;
+    }
+
+    .chips-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+
+    .chips-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chip {
+      white-space: nowrap;
+      padding: 7px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--md-sys-color-outline-variant);
+      background: var(--md-sys-color-surface);
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .chip.active {
+      background: var(--md-sys-color-secondary-container);
+      color: var(--md-sys-color-on-secondary-container);
+      border-color: transparent;
+    }
+
+    main {
+      flex: 1;
+      max-width: 720px;
+      width: 100%;
+      margin: 12px auto;
+      padding: 0 16px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .status-strip {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--md-sys-color-on-surface-variant);
+    }
+
+    .offline-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--md-sys-color-secondary-container);
+      color: var(--md-sys-color-on-secondary-container);
+      font-weight: 600;
+      font-size: 0.74rem;
+    }
+
+    .card-viewport {
+      width: 100%;
+      perspective: 1200px;
+      transform: scale(var(--zoom-scale));
+      transform-origin: top center;
+      transition: transform 0.2s ease;
+    }
+
+    .flip-card {
+      width: 100%;
+      min-height: 390px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .flip-card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      background: var(--md-sys-color-surface);
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: 28px;
+      box-shadow: var(--card-shadow);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: var(--md-sys-color-surface);
+    }
+
+    .card-art-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.13;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card-top, .card-center, .card-bottom {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .category-caption {
+      background: var(--md-sys-color-primary-container);
+      color: var(--md-sys-color-on-primary-container);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .side-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--md-sys-color-on-surface-variant);
+      background: var(--md-sys-color-surface-variant);
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    .card-center {
+      text-align: center;
+      padding: 18px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .oromo-phrase {
+      font-size: 1.65rem;
+      font-weight: 800;
+      line-height: 1.3;
+      color: var(--md-sys-color-on-surface);
+    }
+
+    .phonetic-text {
+      font-size: 0.92rem;
+      font-style: italic;
+      color: var(--md-sys-color-primary);
+      font-weight: 500;
+    }
+
+    .tap-hint {
+      font-size: 0.76rem;
+      color: var(--md-sys-color-on-surface-variant);
+      margin-top: 6px;
+      background: var(--md-sys-color-surface-variant);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .back-section {
+      text-align: left;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .english-eq {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--md-sys-color-secondary);
+      line-height: 1.3;
+    }
+
+    .detail-box {
+      background: var(--md-sys-color-surface-variant);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+
+    .detail-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--md-sys-color-primary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 8px;
+      border-top: 1px dashed var(--md-sys-color-outline-variant);
+    }
+
+    .reaction-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-action {
+      border: 1px solid var(--md-sys-color-outline-variant);
+      background: var(--md-sys-color-surface);
+      color: var(--md-sys-color-on-surface);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .pill-action.active-like {
+      background: var(--md-sys-color-secondary-container);
+      color: var(--md-sys-color-on-secondary-container);
+      border-color: transparent;
+    }
+
+    .pill-action.active-dislike {
+      background: var(--md-sys-color-primary-container);
+      color: var(--md-sys-color-on-primary-container);
+      border-color: transparent;
+    }
+
+    .pill-action.active-fav {
+      background: var(--md-sys-color-tertiary-container);
+      color: var(--md-sys-color-on-surface);
+      border-color: transparent;
+    }
+
+    .utility-toolbar {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .util-btn {
+      background: var(--md-sys-color-surface);
+      border: 1px solid var(--md-sys-color-outline-variant);
+      color: var(--md-sys-color-on-surface);
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-controls {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      padding: 13px 16px;
+      border-radius: 16px;
+      border: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      background: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
+    }
+
+    .nav-btn.secondary {
+      background: var(--md-sys-color-surface-variant);
+      color: var(--md-sys-color-on-surface);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: none;
+      place-items: center;
+      padding: 16px;
+      z-index: 50;
+    }
+
+    .modal-backdrop.open {
+      display: grid;
+    }
+
+    .modal-card {
+      background: var(--md-sys-color-surface);
+      color: var(--md-sys-color-on-surface);
+      width: 100%;
+      max-width: 480px;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 24px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .form-group input, .form-group textarea, .form-group select {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid var(--md-sys-color-outline-variant);
+      background: var(--md-sys-color-background);
+      color: var(--md-sys-color-on-surface);
+      font-size: 0.9rem;
+    }
+
+    .list-item {
+      padding: 10px;
+      border-radius: 12px;
+      background: var(--md-sys-color-surface-variant);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="brand-badge">M</div>
+      <div class="brand-title">
+        <h1>Mammaaksa</h1>
+        <span>Oromo Idioms & Cultural Explorer</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="btn-add" title="Add New Idiom">＋</button>
+      <button class="icon-btn" id="btn-drawer" title="History & Saved">★</button>
+      <button class="icon-btn" id="btn-theme" title="Toggle Dark/Light Theme">◐</button>
+    </div>
+  </header>
+
+  <section class="controls-bar">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="search" id="search-input" placeholder="Search Afaan Oromoo, English, or meaning..." />
+    </div>
+    <div class="chips-row" id="category-chips"></div>
+  </section>
+
+  <main>
+    <div class="status-strip">
+      <span id="counter-label">Loading idioms...</span>
+      <span class="offline-pill" id="network-status">● Offline Ready</span>
+    </div>
+
+    <div class="card-viewport" id="card-viewport">
+      <div class="flip-card" id="flip-card">
+        <div class="card-face card-front">
+          <div class="card-art-bg" id="art-front"></div>
+          <div class="card-top">
+            <span class="category-caption" id="front-category">Category</span>
+            <span class="side-badge">Afaan Oromoo</span>
+          </div>
+          <div class="card-center">
+            <div class="oromo-phrase" id="front-oromo">Obsaan aannan goromsaa dhuga.</div>
+            <div class="phonetic-text" id="front-phonetic">Ob-saan aa-nnan go-rom-saa dhu-ga</div>
+            <div class="tap-hint">Double-tap card to reveal English equivalent</div>
+          </div>
+          <div class="card-bottom">
+            <div class="reaction-group">
+              <button class="pill-action" id="btn-like" type="button">👍 <span id="like-count">0</span></button>
+              <button class="pill-action" id="btn-dislike" type="button">👎</button>
+            </div>
+            <button class="pill-action" id="btn-fav" type="button">☆ Save</button>
+          </div>
+        </div>
+
+        <div class="card-face card-back">
+          <div class="card-art-bg" id="art-back"></div>
+          <div class="card-top">
+            <span class="category-caption" id="back-dialect">Pan-Oromo</span>
+            <span class="side-badge">English & Safuu</span>
+          </div>
+          <div class="back-section">
+            <div class="english-eq" id="back-english">Patience is a virtue; good things come to those who wait.</div>
+            <div class="detail-box">
+              <span class="detail-label">Literal Poetic Metaphor</span>
+              <span id="back-literal">The patient person drinks the milk of a heifer.</span>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">Cultural Context</span>
+              <span id="back-context">Rooted in Oromo pastoral wisdom...</span>
+            </div>
+            <div class="detail-box">
+              <span class="detail-label">Example Usage</span>
+              <div id="back-example" style="font-weight:600;"></div>
+            </div>
+          </div>
+          <div class="card-bottom">
+            <span class="tap-hint" style="margin:0;">Double-tap to flip back</span>
+            <button class="pill-action" id="btn-speak" type="button">🔊 Pronounce</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="utility-toolbar">
+      <button class="util-btn" id="btn-zoom-out">A− Zoom</button>
+      <button class="util-btn" id="btn-zoom-in">A+ Zoom</button>
+      <button class="util-btn" id="btn-save-img">🖼️ Save Image</button>
+      <button class="util-btn" id="btn-flip-explicit">🔄 Flip Card</button>
+    </div>
+
+    <div class="nav-controls">
+      <button class="nav-btn secondary" id="btn-prev">← Previous</button>
+      <button class="nav-btn secondary" id="btn-random" title="Random Idiom">🎲</button>
+      <button class="nav-btn" id="btn-next">Next →</button>
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="drawer-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>★ Saved & Browsing History</h3>
+        <button class="icon-btn" id="close-drawer">✕</button>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="chip active" id="tab-favs">Favorites</button>
+        <button class="chip" id="tab-hist">History</button>
+        <button class="chip" id="btn-export-gh" style="margin-left:auto;">Export JSON for GitHub</button>
+      </div>
+      <div id="drawer-list" style="display:flex; flex-direction:column; gap:8px;"></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="add-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>＋ Contribute Oromo Idiom</h3>
+        <button class="icon-btn" id="close-add">✕</button>
+      </div>
+      <form id="add-form" style="display:flex; flex-direction:column; gap:10px;">
+        <div class="form-group">
+          <label>Afaan Oromoo Idiom (Qubee)*</label>
+          <input type="text" id="in-oromo" required placeholder="e.g., Obsaan aannan goromsaa dhuga." />
+        </div>
+        <div class="form-group">
+          <label>Phonetic Guide</label>
+          <input type="text" id="in-phonetic" placeholder="e.g., Ob-saan aa-nnan..." />
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <input type="text" id="in-category" value="Community & Ubuntu" />
+        </div>
+        <div class="form-group">
+          <label>English Equivalent*</label>
+          <input type="text" id="in-english" required placeholder="Natural English meaning" />
+        </div>
+        <div class="form-group">
+          <label>Literal Translation</label>
+          <input type="text" id="in-literal" placeholder="Word-for-word translation" />
+        </div>
+        <div class="form-group">
+          <label>Cultural Context</label>
+          <textarea id="in-context" rows="2" placeholder="Cultural wisdom behind this expression..."></textarea>
+        </div>
+        <button type="submit" class="nav-btn">Save to Local Browser</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const FALLBACK_IDIOMS = [
+      {
+        id: "obsaa-annan-goromsaa-dhuga",
+        oromo: "Obsaan aannan goromsaa dhuga.",
+        phonetic: "Ob-saan aa-nnan go-rom-saa dhu-ga",
+        category: "Patience & Perseverance",
+        englishEquivalent: "Patience is a virtue; good things come to those who wait.",
+        literalTranslation: "The patient person drinks the milk of a heifer.",
+        culturalContext: "Rooted in Oromo pastoral wisdom: raising a young calf into a milking cow takes seasons of care before it yields milk.",
+        example: { oromo: "Hin jarjarin, obsaan aannan goromsaa dhuga.", english: "Do not rush; with patience you will drink the heifer's milk." },
+        dialect: "Pan-Oromo",
+        artwork: "pastoral-cattle"
+      }
+    ];
+
+    let allIdioms = [];
+    let filteredIdioms = [];
+    let currentIndex = 0;
+    let selectedCategory = "All";
+    let zoomLevel = 1;
+
+    const store = {
+      get: (k, def) => JSON.parse(localStorage.getItem(k) || JSON.stringify(def)),
+      set: (k, v) => localStorage.setItem(k, JSON.stringify(v))
+    };
+
+    function getArtworkSVG(type) {
+      const svgs = {
+        "odaa-assembly": `<svg viewBox="0 0 400 300" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"><circle cx="200" cy="110" r="85" fill="#2E5A44"/><rect x="186" y="160" width="28" height="110" fill="#8D4925"/><path d="M40 270 Q200 220 360 270" stroke="#7A5900" stroke-width="10" fill="none"/></svg>`,
+        "coffee-ceremony": `<svg viewBox="0 0 400 300" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"><circle cx="200" cy="175" r="55" fill="#8D4925"/><rect x="190" y="95" width="20" height="35" fill="#8D4925"/><path d="M185 75 Q200 50 215 75" stroke="#7A5900" stroke-width="6" fill="none"/></svg>`,
+        "mountain-path": `<svg viewBox="0 0 400 300" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"><polygon points="30,270 150,90 270,270" fill="#2E5A44"/><polygon points="160,270 280,110 390,270" fill="#8D4925"/></svg>`,
+        "default": `<svg viewBox="0 0 400 300" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"><circle cx="310" cy="80" r="45" fill="#F3BF48"/><path d="M0 240 Q140 160 280 230 T400 210 L400 300 L0 300 Z" fill="#2E5A44"/></svg>`
+      };
+      return svgs[type] || svgs["default"];
+    }
+
+    async function loadIdioms() {
+      try {
+        const res = await fetch('./idioms.json');
+        if (!res.ok) throw new Error('Network response failed');
+        const repoData = await res.json();
+        const customData = store.get('mammaaksa_custom_idioms', []);
+        allIdioms = [...repoData, ...customData];
+      } catch (e) {
+        const customData = store.get('mammaaksa_custom_idioms', []);
+        allIdioms = [...FALLBACK_IDIOMS, ...customData];
+      }
+      renderCategories();
+      applyFilters();
+    }
+
+    function renderCategories() {
+      const cats = ["All", ...new Set(allIdioms.map(i => i.category))];
+      const container = document.getElementById('category-chips');
+      container.innerHTML = cats.map(c =>
+        `<button class="chip ${c === selectedCategory ? 'active' : ''}" data-cat="${c}">${c}</button>`
+      ).join('');
+
+      container.querySelectorAll('.chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedCategory = btn.dataset.cat;
+          renderCategories();
+          applyFilters();
+        });
+      });
+    }
+
+    function applyFilters() {
+      const q = document.getElementById('search-input').value.trim().toLowerCase();
+      filteredIdioms = allIdioms.filter(item => {
+        const matchesCat = selectedCategory === "All" || item.category === selectedCategory;
+        const matchesQ = !q ||
+          item.oromo.toLowerCase().includes(q) ||
+          item.englishEquivalent.toLowerCase().includes(q) ||
+          (item.culturalContext && item.culturalContext.toLowerCase().includes(q));
+        return matchesCat && matchesQ;
+      });
+      currentIndex = 0;
+      renderCard();
+    }
+
+    function renderCard() {
+      const counter = document.getElementById('counter-label');
+      const card = document.getElementById('flip-card');
+      card.classList.remove('flipped');
+
+      if (filteredIdioms.length === 0) {
+        counter.textContent = "0 idioms matched";
+        document.getElementById('front-oromo').textContent = "No matching idioms found.";
+        document.getElementById('front-phonetic').textContent = "Try clearing your search or filter.";
+        return;
+      }
+
+      const item = filteredIdioms[currentIndex];
+      counter.textContent = `Card ${currentIndex + 1} of ${filteredIdioms.length}`;
+
+      document.getElementById('front-category').textContent = item.category;
+      document.getElementById('front-oromo').textContent = item.oromo;
+      document.getElementById('front-phonetic').textContent = item.phonetic || "";
+      document.getElementById('back-dialect').textContent = item.dialect || "Pan-Oromo";
+      document.getElementById('back-english').textContent = item.englishEquivalent;
+      document.getElementById('back-literal').textContent = item.literalTranslation || "—";
+      document.getElementById('back-context').textContent = item.culturalContext || "—";
+      document.getElementById('back-example').innerHTML = item.example
+        ? `"${item.example.oromo}"<br><span style="font-weight:400;opacity:0.85;">${item.example.english}</span>`
+        : "—";
+
+      const art = getArtworkSVG(item.artwork);
+      document.getElementById('art-front').innerHTML = art;
+      document.getElementById('art-back').innerHTML = art;
+
+      const reactions = store.get('mammaaksa_reactions', {});
+      const favs = store.get('mammaaksa_favs', []);
+      const state = reactions[item.id] || null;
+
+      const btnLike = document.getElementById('btn-like');
+      const btnDislike = document.getElementById('btn-dislike');
+      const btnFav = document.getElementById('btn-fav');
+
+      btnLike.className = `pill-action ${state === 'like' ? 'active-like' : ''}`;
+      btnDislike.className = `pill-action ${state === 'dislike' ? 'active-dislike' : ''}`;
+      document.getElementById('like-count').textContent = state === 'like' ? '1' : '0';
+
+      const isFav = favs.includes(item.id);
+      btnFav.className = `pill-action ${isFav ? 'active-fav' : ''}`;
+      btnFav.textContent = isFav ? '★ Saved' : '☆ Save';
+
+      let hist = store.get('mammaaksa_history', []);
+      hist = [item.id, ...hist.filter(id => id !== item.id)].slice(0, 30);
+      store.set('mammaaksa_history', hist);
+    }
+
+    let lastTap = 0;
+    const flipCardEl = document.getElementById('flip-card');
+    flipCardEl.addEventListener('click', (e) => {
+      if (e.target.closest('button')) return;
+      const now = Date.now();
+      if (now - lastTap < 320) {
+        flipCardEl.classList.toggle('flipped');
+      }
+      lastTap = now;
+    });
+
+    document.getElementById('btn-flip-explicit').addEventListener('click', () => {
+      flipCardEl.classList.toggle('flipped');
+    });
+
+    document.getElementById('btn-like').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const item = filteredIdioms[currentIndex];
+      if (!item) return;
+      const reactions = store.get('mammaaksa_reactions', {});
+      reactions[item.id] = reactions[item.id] === 'like' ? null : 'like';
+      store.set('mammaaksa_reactions', reactions);
+      renderCard();
+    });
+
+    document.getElementById('btn-dislike').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const item = filteredIdioms[currentIndex];
+      if (!item) return;
+      const reactions = store.get('mammaaksa_reactions', {});
+      reactions[item.id] = reactions[item.id] === 'dislike' ? null : 'dislike';
+      store.set('mammaaksa_reactions', reactions);
+      renderCard();
+    });
+
+    document.getElementById('btn-fav').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const item = filteredIdioms[currentIndex];
+      if (!item) return;
+      let favs = store.get('mammaaksa_favs', []);
+      favs = favs.includes(item.id) ? favs.filter(id => id !== item.id) : [item.id, ...favs];
+      store.set('mammaaksa_favs', favs);
+      renderCard();
+    });
+
+    document.getElementById('btn-prev').addEventListener('click', () => {
+      if (!filteredIdioms.length) return;
+      currentIndex = (currentIndex - 1 + filteredIdioms.length) % filteredIdioms.length;
+      renderCard();
+    });
+
+    document.getElementById('btn-next').addEventListener('click', () => {
+      if (!filteredIdioms.length) return;
+      currentIndex = (currentIndex + 1) % filteredIdioms.length;
+      renderCard();
+    });
+
+    document.getElementById('btn-random').addEventListener('click', () => {
+      if (filteredIdioms.length < 2) return;
+      currentIndex = Math.floor(Math.random() * filteredIdioms.length);
+      renderCard();
+    });
+
+    document.getElementById('btn-zoom-in').addEventListener('click', () => {
+      zoomLevel = Math.min(1.2, +(zoomLevel + 0.05).toFixed(2));
+      document.documentElement.style.setProperty('--zoom-scale', zoomLevel);
+    });
+
+    document.getElementById('btn-zoom-out').addEventListener('click', () => {
+      zoomLevel = Math.max(0.85, +(zoomLevel - 0.05).toFixed(2));
+      document.documentElement.style.setProperty('--zoom-scale', zoomLevel);
+    });
+
+    document.getElementById('btn-speak').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const item = filteredIdioms[currentIndex];
+      if (!item || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(item.oromo);
+      utter.rate = 0.85;
+      window.speechSynthesis.speak(utter);
+    });
+
+    document.getElementById('btn-save-img').addEventListener('click', () => {
+      const item = filteredIdioms[currentIndex];
+      if (!item) return;
+      const canvas = document.createElement('canvas');
+      canvas.width = 1080;
+      canvas.height = 1080;
+      const ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = '#4E342E';
+      ctx.fillRect(0, 0, 1080, 1080);
+
+      ctx.fillStyle = '#FAF6F0';
+      ctx.beginPath();
+      ctx.roundRect(60, 60, 960, 960, 48);
+      ctx.fill();
+
+      ctx.fillStyle = '#8D4925';
+      ctx.font = 'bold 28px sans-serif';
+      ctx.fillText(item.category.toUpperCase(), 110, 145);
+
+      ctx.fillStyle = '#221A15';
+      ctx.font = 'bold 54px sans-serif';
+      wrapText(ctx, `"${item.oromo}"`, 110, 270, 860, 72);
+
+      ctx.fillStyle = '#2E5A44';
+      ctx.font = 'bold 38px sans-serif';
+      wrapText(ctx, `English: ${item.englishEquivalent}`, 110, 560, 860, 52);
+
+      ctx.fillStyle = '#52443C';
+      ctx.font = '28px sans-serif';
+      wrapText(ctx, `Literal: ${item.literalTranslation || ''}`, 110, 760, 860, 40);
+
+      ctx.fillStyle = '#8D4925';
+      ctx.font = 'bold 24px sans-serif';
+      ctx.fillText('Mammaaksa — Oromo Idioms Cultural Explorer', 110, 955);
+
+      const link = document.createElement('a');
+      link.download = `${item.id || 'mammaaksa-card'}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+      const words = text.split(' ');
+      let line = '';
+      for (let n = 0; n < words.length; n++) {
+        const testLine = line + words[n] + ' ';
+        if (ctx.measureText(testLine).width > maxWidth && n > 0) {
+          ctx.fillText(line, x, y);
+          line = words[n] + ' ';
+          y += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx.fillText(line, x, y);
+    }
+
+    document.getElementById('btn-theme').addEventListener('click', () => {
+      const html = document.documentElement;
+      const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      store.set('mammaaksa_theme', next);
+    });
+    const savedTheme = store.get('mammaaksa_theme', 'light');
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    document.getElementById('search-input').addEventListener('input', applyFilters);
+
+    const drawerModal = document.getElementById('drawer-modal');
+    let drawerMode = 'favs';
+
+    function renderDrawerList() {
+      const listEl = document.getElementById('drawer-list');
+      const ids = drawerMode === 'favs'
+        ? store.get('mammaaksa_favs', [])
+        : store.get('mammaaksa_history', []);
+      const items = ids.map(id => allIdioms.find(i => i.id === id)).filter(Boolean);
+
+      if (!items.length) {
+        listEl.innerHTML = `<p style="font-size:0.85rem;opacity:0.75;">No ${drawerMode === 'favs' ? 'saved favorites' : 'browsing history'} yet.</p>`;
+        return;
+      }
+
+      listEl.innerHTML = items.map(item => `
+        <div class="list-item" data-id="${item.id}">
+          <div>
+            <div style="font-weight:700;font-size:0.9rem;">${item.oromo}</div>
+            <div style="font-size:0.78rem;opacity:0.8;">${item.englishEquivalent}</div>
+          </div>
+          <span>→</span>
+        </div>
+      `).join('');
+
+      listEl.querySelectorAll('.list-item').forEach(row => {
+        row.addEventListener('click', () => {
+          selectedCategory = "All";
+          document.getElementById('search-input').value = "";
+          renderCategories();
+          applyFilters();
+          const idx = filteredIdioms.findIndex(i => i.id === row.dataset.id);
+          if (idx >= 0) {
+            currentIndex = idx;
+            renderCard();
+          }
+          drawerModal.classList.remove('open');
+        });
+      });
+    }
+
+    document.getElementById('btn-drawer').addEventListener('click', () => {
+      drawerModal.classList.add('open');
+      renderDrawerList();
+    });
+    document.getElementById('close-drawer').addEventListener('click', () => drawerModal.classList.remove('open'));
+    document.getElementById('tab-favs').addEventListener('click', (e) => {
+      drawerMode = 'favs';
+      e.target.classList.add('active');
+      document.getElementById('tab-hist').classList.remove('active');
+      renderDrawerList();
+    });
+    document.getElementById('tab-hist').addEventListener('click', (e) => {
+      drawerMode = 'hist';
+      e.target.classList.add('active');
+      document.getElementById('tab-favs').classList.remove('active');
+      renderDrawerList();
+    });
+
+    document.getElementById('btn-export-gh').addEventListener('click', () => {
+      const customIdioms = store.get('mammaaksa_custom_idioms', []);
+      if (!customIdioms.length) {
+        alert('Tap + in the top bar to add a custom Oromo idiom first!');
+        return;
+      }
+      const formatted = customIdioms.map(i => JSON.stringify(i, null, 2)).join(',\n');
+      navigator.clipboard?.writeText(formatted).then(() => {
+        if (confirm('✅ JSON copied to clipboard! Open berisogit/mammaaksa-oromo-idioms on GitHub to paste into idioms.json?')) {
+          window.open('https://github.com/berisogit/mammaaksa-oromo-idioms/edit/main/idioms.json', '_blank', 'noopener');
+        }
+      }).catch(() => prompt('Copy this JSON snippet for idioms.json:', formatted));
+    });
+
+    const addModal = document.getElementById('add-modal');
+    document.getElementById('btn-add').addEventListener('click', () => addModal.classList.add('open'));
+    document.getElementById('close-add').addEventListener('click', () => addModal.classList.remove('open'));
+    document.getElementById('add-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const oromoVal = document.getElementById('in-oromo').value.trim();
+      const newEntry = {
+        id: oromoVal.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '-' + Date.now().toString().slice(-4),
+        oromo: oromoVal,
+        phonetic: document.getElementById('in-phonetic').value.trim(),
+        category: document.getElementById('in-category').value.trim() || 'Community & Ubuntu',
+        englishEquivalent: document.getElementById('in-english').value.trim(),
+        literalTranslation: document.getElementById('in-literal').value.trim(),
+        culturalContext: document.getElementById('in-context').value.trim(),
+        example: { oromo: oromoVal, english: document.getElementById('in-english').value.trim() },
+        dialect: 'Community Contribution',
+        artwork: 'odaa-assembly'
+      };
+      const custom = store.get('mammaaksa_custom_idioms', []);
+      custom.unshift(newEntry);
+      store.set('mammaaksa_custom_idioms', custom);
+      allIdioms.unshift(newEntry);
+      selectedCategory = "All";
+      renderCategories();
+      applyFilters();
+      e.target.reset();
+      addModal.classList.remove('open');
+    });
+
+    function updateOnlineStatus() {
+      const pill = document.getElementById('network-status');
+      pill.textContent = navigator.onLine ? '● Online & Cached' : '● Offline Mode';
+    }
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => console.warn('SW error:', err));
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadIdioms);
+  </script>
+</body>
+</html>
