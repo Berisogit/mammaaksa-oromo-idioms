@@ -1,0 +1,59 @@
+name: Validate idioms.json
+
+on:
+  pull_request:
+    paths:
+      - 'idioms.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate JSON schema and uniqueness
+        run: |
+          node -e '
+            const fs = require("fs");
+            const data = JSON.parse(fs.readFileSync("idioms.json", "utf8"));
+
+            if (!Array.isArray(data) || data.length === 0) {
+              throw new Error("idioms.json must be a non-empty array.");
+            }
+
+            const requiredFields = [
+              "id",
+              "oromo",
+              "phonetic",
+              "category",
+              "englishEquivalent",
+              "literalTranslation",
+              "culturalContext",
+              "example"
+            ];
+
+            const seenIds = new Set();
+
+            data.forEach((item, index) => {
+              for (const field of requiredFields) {
+                if (!item[field]) {
+                  throw new Error(`Entry #${index + 1} (${item.id || "unknown"}) is missing required field: "${field}"`);
+                }
+              }
+              if (!item.example.oromo || !item.example.english) {
+                throw new Error(`Entry "${item.id}" must include both example.oromo and example.english`);
+              }
+              if (seenIds.has(item.id)) {
+                throw new Error(`Duplicate id found: "${item.id}". Each idiom must have a unique slug.`);
+              }
+              seenIds.add(item.id);
+            });
+
+            console.log(`Success! Validated ${data.length} Oromo idioms.`);
+          '
