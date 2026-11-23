@@ -72,17 +72,38 @@
       transition: background-color 0.25s ease, color 0.25s ease;
     }
 
+    /* Fullscreen & TV Big-Screen Mode */
+    body.tv-mode .oromo-phrase,
+    :fullscreen .oromo-phrase {
+      font-size: 2.5rem;
+    }
+    body.tv-mode .english-eq,
+    :fullscreen .english-eq {
+      font-size: 1.85rem;
+    }
+    body.tv-mode .flip-card,
+    :fullscreen .flip-card {
+      min-height: 460px;
+    }
+    body.tv-mode .nav-btn,
+    body.tv-mode .util-btn,
+    body.tv-mode .pill-action {
+      font-size: 1.02rem;
+      padding: 12px 16px;
+    }
+
     header {
       background: var(--md-sys-color-surface);
       border-bottom: 1px solid var(--md-sys-color-outline-variant);
-      padding: 12px 16px;
+      padding: 10px 14px;
       position: sticky;
       top: 0;
       z-index: 20;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .brand {
@@ -110,7 +131,7 @@
     }
 
     .brand-title span {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: var(--md-sys-color-on-surface-variant);
       display: block;
     }
@@ -119,6 +140,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      flex-wrap: wrap;
     }
 
     .icon-btn {
@@ -126,12 +148,15 @@
       color: var(--md-sys-color-on-surface);
       border: none;
       border-radius: 999px;
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
+      height: 36px;
+      padding: 0 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 0.82rem;
+      font-weight: 700;
       transition: transform 0.15s ease, background 0.2s ease;
     }
 
@@ -139,14 +164,19 @@
       transform: scale(0.93);
     }
 
+    .icon-btn.active-mode {
+      background: var(--md-sys-color-secondary-container);
+      color: var(--md-sys-color-on-secondary-container);
+    }
+
     .controls-bar {
-      max-width: 720px;
+      max-width: 840px;
       width: 100%;
-      margin: 12px auto 0;
+      margin: 10px auto 0;
       padding: 0 16px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .search-box {
@@ -157,7 +187,7 @@
 
     .search-box input {
       width: 100%;
-      padding: 11px 16px 11px 40px;
+      padding: 10px 16px 10px 38px;
       border-radius: 999px;
       border: 1px solid var(--md-sys-color-outline-variant);
       background: var(--md-sys-color-surface);
@@ -174,7 +204,7 @@
       position: absolute;
       left: 14px;
       color: var(--md-sys-color-on-surface-variant);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
     .chips-row {
@@ -191,15 +221,14 @@
 
     .chip {
       white-space: nowrap;
-      padding: 7px 14px;
+      padding: 6px 13px;
       border-radius: 10px;
       border: 1px solid var(--md-sys-color-outline-variant);
       background: var(--md-sys-color-surface);
       color: var(--md-sys-color-on-surface-variant);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
     }
 
     .chip.active {
@@ -210,14 +239,14 @@
 
     main {
       flex: 1;
-      max-width: 720px;
+      max-width: 840px;
       width: 100%;
-      margin: 12px auto;
-      padding: 0 16px 24px;
+      margin: 10px auto;
+      padding: 0 16px 28px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     .status-strip {
@@ -225,6 +254,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
       font-size: 0.8rem;
       color: var(--md-sys-color-on-surface-variant);
     }
@@ -251,7 +282,7 @@
 
     .flip-card {
       width: 100%;
-      min-height: 390px;
+      min-height: 385px;
       position: relative;
       transform-style: preserve-3d;
       transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -311,7 +342,6 @@
       border-radius: 999px;
       font-size: 0.76rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
     }
 
     .side-badge {
@@ -327,7 +357,7 @@
 
     .card-center {
       text-align: center;
-      padding: 18px 8px;
+      padding: 16px 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -362,11 +392,11 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 9px;
     }
 
     .english-eq {
-      font-size: 1.25rem;
+      font-size: 1.22rem;
       font-weight: 800;
       color: var(--md-sys-color-secondary);
       line-height: 1.3;
@@ -375,13 +405,13 @@
     .detail-box {
       background: var(--md-sys-color-surface-variant);
       border-radius: 14px;
-      padding: 10px 12px;
-      font-size: 0.85rem;
-      line-height: 1.45;
+      padding: 9px 12px;
+      font-size: 0.84rem;
+      line-height: 1.42;
     }
 
     .detail-label {
-      font-size: 0.7rem;
+      font-size: 0.69rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -441,21 +471,27 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 8px;
+      gap: 7px;
     }
 
     .util-btn {
       background: var(--md-sys-color-surface);
       border: 1px solid var(--md-sys-color-outline-variant);
       color: var(--md-sys-color-on-surface);
-      padding: 8px 12px;
+      padding: 8px 11px;
       border-radius: 12px;
-      font-size: 0.8rem;
+      font-size: 0.79rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
+    }
+
+    .util-btn.active-btn {
+      background: var(--md-sys-color-secondary-container);
+      color: var(--md-sys-color-on-secondary-container);
+      border-color: transparent;
     }
 
     .nav-controls {
@@ -482,10 +518,31 @@
       color: var(--md-sys-color-on-surface);
     }
 
+    /* On-screen Smart TV & QR quick banner */
+    .tv-banner {
+      width: 100%;
+      background: var(--md-sys-color-surface);
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: 20px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tv-banner-text {
+      flex: 1;
+      min-width: 210px;
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.58);
       display: none;
       place-items: center;
       padding: 16px;
@@ -500,8 +557,8 @@
       background: var(--md-sys-color-surface);
       color: var(--md-sys-color-on-surface);
       width: 100%;
-      max-width: 480px;
-      max-height: 85vh;
+      max-width: 520px;
+      max-height: 86vh;
       overflow-y: auto;
       border-radius: 24px;
       padding: 20px;
@@ -546,6 +603,26 @@
       gap: 8px;
       cursor: pointer;
     }
+
+    .info-callout {
+      background: var(--md-sys-color-surface-variant);
+      padding: 12px;
+      border-radius: 14px;
+      font-size: 0.83rem;
+      line-height: 1.48;
+    }
+
+    .qr-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      color: #221A15;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--md-sys-color-outline-variant);
+    }
   </style>
 </head>
 <body>
@@ -558,6 +635,10 @@
       </div>
     </div>
     <div class="header-actions">
+      <button class="icon-btn" id="btn-fullscreen-top" title="Toggle Fullscreen Display">⛶ Fullscreen</button>
+      <button class="icon-btn" id="btn-music-modal" title="Kids Music & Sound Effects">🎵 Sound</button>
+      <button class="icon-btn" id="btn-tv-modal" title="Smart TV, SmartTube & QR">📺 TV / QR</button>
+      <button class="icon-btn" id="btn-source-modal" title="Online Idioms Sync">🌐 Online</button>
       <button class="icon-btn" id="btn-add" title="Add New Idiom">＋</button>
       <button class="icon-btn" id="btn-drawer" title="History & Saved">★</button>
       <button class="icon-btn" id="btn-theme" title="Toggle Dark/Light Theme">◐</button>
@@ -575,7 +656,11 @@
   <main>
     <div class="status-strip">
       <span id="counter-label">Loading idioms...</span>
-      <span class="offline-pill" id="network-status">● Offline Ready</span>
+      <span style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+        <button class="offline-pill" id="btn-sync-now" style="border:none;cursor:pointer;" title="Tap to refresh online idioms">↻ Sync Online</button>
+        <span class="offline-pill" id="source-badge">Source: Checking...</span>
+        <span class="offline-pill" id="network-status">● Ready</span>
+      </span>
     </div>
 
     <div class="card-viewport" id="card-viewport">
@@ -630,10 +715,14 @@
     </div>
 
     <div class="utility-toolbar">
+      <button class="util-btn" id="btn-fullscreen-bar">⛶ Full Screen</button>
+      <button class="util-btn" id="btn-quick-music">🎵 Kids Music</button>
+      <button class="util-btn active-btn" id="btn-sfx-toggle">🔔 SFX: On</button>
+      <button class="util-btn" id="btn-tv-layout">📺 TV Layout</button>
       <button class="util-btn" id="btn-zoom-out">A− Zoom</button>
       <button class="util-btn" id="btn-zoom-in">A+ Zoom</button>
-      <button class="util-btn" id="btn-save-img">🖼️ Save Image</button>
-      <button class="util-btn" id="btn-flip-explicit">🔄 Flip Card</button>
+      <button class="util-btn" id="btn-save-img">🖼️ Save Card</button>
+      <button class="util-btn" id="btn-flip-explicit">🔄 Flip</button>
     </div>
 
     <div class="nav-controls">
@@ -641,15 +730,115 @@
       <button class="nav-btn secondary" id="btn-random" title="Random Idiom">🎲</button>
       <button class="nav-btn" id="btn-next">Next →</button>
     </div>
+
+    <!-- On-screen Smart TV & Downloadable App Guide -->
+    <div class="tv-banner">
+      <div class="tv-banner-text">
+        <strong>📺 Watch & Learn on Smart TV / SmartTube:</strong> Open on your Smart TV browser, cast your screen, or install offline for family learning.
+      </div>
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <button class="pill-action" id="btn-open-tv-guide">📲 TV Guide & QR Code</button>
+        <button class="pill-action" id="btn-install-pwa" style="display:none;">⬇ Install App</button>
+      </div>
+    </div>
   </main>
 
+  <audio id="custom-music-audio" loop preload="none" crossorigin="anonymous"></audio>
+
+  <!-- Sound Effects & Children-Friendly Music Modal -->
+  <div class="modal-backdrop" id="music-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>🎵 Sound Effects & Kids Music</h3>
+        <button class="icon-btn" id="close-music">✕</button>
+      </div>
+      <div class="info-callout">
+        <strong>1. Interactive Sound Effects (SFX):</strong> Soft wooden marimba & chime feedback when flipping cards, navigating, or saving favorites.<br />
+        <strong>2. Inbuilt Kids Lullaby Synth:</strong> Offline pentatonic melody generated in your browser—works with zero internet or MP3 downloads.
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="nav-btn" id="btn-play-inbuilt">▶ Play Inbuilt Kids Music</button>
+        <button class="nav-btn secondary" id="btn-test-sfx">🔔 Test Sound Effect</button>
+        <button class="nav-btn secondary" id="btn-stop-music">⏹ Stop Music</button>
+      </div>
+      <div class="form-group">
+        <label>Volume Level: <span id="vol-label">35%</span></label>
+        <input type="range" id="music-volume" min="0" max="100" value="35" />
+      </div>
+      <hr style="border:none; border-top:1px solid var(--md-sys-color-outline-variant);" />
+      <div class="form-group">
+        <label>Custom Online Audio Track URL (Direct MP3 / OGG / WAV)</label>
+        <input type="url" id="custom-music-url" placeholder="https://example.com/oromo-kids-music.mp3" />
+      </div>
+      <div class="form-group">
+        <label>Or Select Local Audio Track from Phone / TV</label>
+        <input type="file" id="custom-music-file" accept="audio/*" />
+      </div>
+      <button class="nav-btn secondary" id="btn-play-custom-track">▶ Play Custom Audio Track</button>
+    </div>
+  </div>
+
+  <!-- Smart TV, SmartTube & QR Modal -->
+  <div class="modal-backdrop" id="tv-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>📺 Connect to Smart TV & SmartTube</h3>
+        <button class="icon-btn" id="close-tv">✕</button>
+      </div>
+      <div class="qr-box">
+        <img id="tv-qr-img" width="180" height="180" alt="QR Code to open Mammaaksa on Smart TV" style="border-radius:8px;" />
+        <div style="font-size:0.78rem; font-weight:700; text-align:center;">
+          Scan with your Phone or Smart TV Camera<br />
+          <span style="font-weight:500; color:#52443C;">https://berisogit.github.io/mammaaksa-oromo-idioms/</span>
+        </div>
+      </div>
+      <div class="info-callout">
+        <strong>Step-by-Step Smart TV & SmartTube Setup:</strong><br />
+        1. <strong>Smart TV Web Browser (TV Bro / Downloader / Samsung / LG):</strong> Scan the QR code above or type <code>berisogit.github.io/mammaaksa-oromo-idioms</code>, then tap <strong>⛶ Full Screen</strong> and use your TV remote arrows (◀ / ▶ / OK).<br />
+        2. <strong>Download & Install Offline on Android TV:</strong> Open in Chrome/TV Bro on Android TV and choose <em>Add to Home Screen / Install App</em> so children can use it offline.<br />
+        3. <strong>SmartTube / YouTube Video Lessons:</strong> SmartTube plays YouTube feeds rather than web pages—tap the button below to search Oromo <em>Mammaaksa</em> stories directly for SmartTube/YouTube.
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="nav-btn" id="btn-copy-tv-url">📋 Copy App Link</button>
+        <button class="nav-btn secondary" id="btn-fs-in-modal">⛶ Enter Full Screen</button>
+        <button class="nav-btn secondary" id="btn-open-smarttube-search">▶ Search Oromo Idioms on YouTube / SmartTube</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Online Idioms Sync & Custom Resource Modal -->
+  <div class="modal-backdrop" id="source-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>🌐 Automatic Online Idioms & Custom Feed</h3>
+        <button class="icon-btn" id="close-source">✕</button>
+      </div>
+      <div class="info-callout">
+        <strong>Automatic Live Sync Enabled:</strong> Every time you open or refresh the app online, it automatically fetches the latest <code>idioms.json</code> directly from your GitHub repository (<code>berisogit/mammaaksa-oromo-idioms</code>) bypassing stale browser caches.<br /><br />
+        You can also add an extra external JSON feed URL below to merge even more idioms automatically.
+      </div>
+      <form id="source-form" style="display:flex; flex-direction:column; gap:10px;">
+        <div class="form-group">
+          <label>Optional Extra Online Idioms JSON URL</label>
+          <input type="url" id="online-idioms-url" placeholder="https://raw.githubusercontent.com/.../extra-idioms.json" />
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button type="submit" class="nav-btn">↻ Save & Sync Online Now</button>
+          <button type="button" class="nav-btn secondary" id="btn-clear-online-source">Clear Extra URL</button>
+        </div>
+      </form>
+      <div id="source-status-msg" style="font-size:0.82rem; color:var(--md-sys-color-secondary); font-weight:600;"></div>
+    </div>
+  </div>
+
+  <!-- History & Favorites Modal -->
   <div class="modal-backdrop" id="drawer-modal">
     <div class="modal-card">
       <div class="modal-header">
         <h3>★ Saved & Browsing History</h3>
         <button class="icon-btn" id="close-drawer">✕</button>
       </div>
-      <div style="display:flex; gap:8px;">
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
         <button class="chip active" id="tab-favs">Favorites</button>
         <button class="chip" id="tab-hist">History</button>
         <button class="chip" id="btn-export-gh" style="margin-left:auto;">Export JSON for GitHub</button>
@@ -658,6 +847,7 @@
     </div>
   </div>
 
+  <!-- Add Idiom Modal -->
   <div class="modal-backdrop" id="add-modal">
     <div class="modal-card">
       <div class="modal-header">
@@ -695,6 +885,9 @@
   </div>
 
   <script>
+    const LIVE_APP_URL = "https://berisogit.github.io/mammaaksa-oromo-idioms/";
+    const GITHUB_RAW_IDIOMS_URL = "https://raw.githubusercontent.com/berisogit/mammaaksa-oromo-idioms/main/idioms.json";
+
     const FALLBACK_IDIOMS = [
       {
         id: "obsaa-annan-goromsaa-dhuga",
@@ -721,6 +914,392 @@
       set: (k, v) => localStorage.setItem(k, JSON.stringify(v))
     };
 
+    /* ================= FULLSCREEN DISPLAY API ================= */
+    function toggleFullScreen() {
+      const docEl = document.documentElement;
+      const isFs = document.fullscreenElement || document.webkitFullscreenElement;
+      if (!isFs) {
+        const req = docEl.requestFullscreen || docEl.webkitRequestFullscreen;
+        if (req) {
+          req.call(docEl).catch(() => {
+            document.body.classList.toggle('tv-mode');
+          });
+        } else {
+          document.body.classList.toggle('tv-mode');
+        }
+      } else {
+        const exit = document.exitFullscreen || document.webkitExitFullscreen;
+        if (exit) exit.call(document);
+      }
+      playSfx('flip');
+    }
+
+    function updateFullscreenButtons() {
+      const isFs = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+      const topBtn = document.getElementById('btn-fullscreen-top');
+      const barBtn = document.getElementById('btn-fullscreen-bar');
+      topBtn.textContent = isFs ? '✕ Exit Full' : '⛶ Fullscreen';
+      barBtn.textContent = isFs ? '✕ Exit Full' : '⛶ Full Screen';
+      topBtn.classList.toggle('active-mode', isFs);
+      barBtn.classList.toggle('active-btn', isFs);
+    }
+
+    document.addEventListener('fullscreenchange', updateFullscreenButtons);
+    document.addEventListener('webkitfullscreenchange', updateFullscreenButtons);
+    document.getElementById('btn-fullscreen-top').addEventListener('click', toggleFullScreen);
+    document.getElementById('btn-fullscreen-bar').addEventListener('click', toggleFullScreen);
+    document.getElementById('btn-fs-in-modal').addEventListener('click', () => {
+      document.getElementById('tv-modal').classList.remove('open');
+      toggleFullScreen();
+    });
+
+    /* ================= SOUND EFFECTS & KIDS BACKGROUND MUSIC ================= */
+    let audioCtx = null;
+    let synthTimer = null;
+    let activeMusicMode = null;
+    let sfxEnabled = store.get('mammaaksa_sfx_enabled', true);
+    const customAudioEl = document.getElementById('custom-music-audio');
+
+    function getVolumeGainValue() {
+      const pct = Number(document.getElementById('music-volume').value || 35);
+      return Math.max(0.02, Math.min(1, pct / 100));
+    }
+
+    function ensureAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // Unlock audio automatically on first mobile/TV touch
+    document.addEventListener('pointerdown', () => ensureAudioContext(), { once: true });
+
+    // Built-in Web Audio Sound Effects (works 100% offline)
+    function playSfx(type = 'tap') {
+      if (!sfxEnabled) return;
+      const ctx = ensureAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      const vol = getVolumeGainValue() * 0.22;
+
+      if (type === 'flip') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(392, now);
+        osc.frequency.exponentialRampToValueAtTime(587.33, now + 0.14);
+      } else if (type === 'nav') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(523.25, now + 0.09);
+      } else if (type === 'fav') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, now);
+        osc.frequency.setValueAtTime(659.25, now + 0.08);
+        osc.frequency.setValueAtTime(783.99, now + 0.16);
+      } else {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(493.88, now);
+      }
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(Math.max(0.001, vol), now + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.24);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.26);
+    }
+
+    const sfxBtn = document.getElementById('btn-sfx-toggle');
+    function updateSfxBtnUI() {
+      sfxBtn.textContent = sfxEnabled ? '🔔 SFX: On' : '🔕 SFX: Off';
+      sfxBtn.classList.toggle('active-btn', sfxEnabled);
+    }
+    updateSfxBtnUI();
+
+    sfxBtn.addEventListener('click', () => {
+      sfxEnabled = !sfxEnabled;
+      store.set('mammaaksa_sfx_enabled', sfxEnabled);
+      updateSfxBtnUI();
+      if (sfxEnabled) playSfx('fav');
+    });
+
+    const LULLABY_NOTES = [523.25, 587.33, 659.25, 783.99, 880.0, 659.25, 587.33, 523.25];
+    let noteStep = 0;
+
+    function playGentleChime(freq) {
+      const ctx = ensureAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+
+      const peakGain = getVolumeGainValue() * 0.18;
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(Math.max(0.0005, peakGain), now + 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.15);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 1.2);
+    }
+
+    function startInbuiltKidsSynth() {
+      stopAllMusic(false);
+      activeMusicMode = 'synth';
+      playGentleChime(LULLABY_NOTES[noteStep % LULLABY_NOTES.length]);
+      noteStep++;
+      synthTimer = setInterval(() => {
+        if (activeMusicMode === 'synth') {
+          playGentleChime(LULLABY_NOTES[noteStep % LULLABY_NOTES.length]);
+          noteStep++;
+        }
+      }, 950);
+      updateMusicButtonsUI();
+    }
+
+    function playCustomMusicTrack() {
+      const urlInput = document.getElementById('custom-music-url').value.trim();
+      const fileInput = document.getElementById('custom-music-file');
+      let srcUrl = '';
+
+      if (fileInput.files && fileInput.files[0]) {
+        srcUrl = URL.createObjectURL(fileInput.files[0]);
+      } else if (urlInput) {
+        srcUrl = urlInput;
+        store.set('mammaaksa_custom_music_url', urlInput);
+      }
+
+      if (!srcUrl) {
+        alert('Enter a direct MP3/WAV audio URL or choose a local audio file first.');
+        return;
+      }
+
+      stopAllMusic(false);
+      activeMusicMode = 'custom';
+      customAudioEl.src = srcUrl;
+      customAudioEl.volume = getVolumeGainValue();
+      customAudioEl.play().catch(err => {
+        alert('Audio playback blocked or unsupported link: ' + err.message);
+      });
+      updateMusicButtonsUI();
+    }
+
+    function stopAllMusic(updateUi = true) {
+      activeMusicMode = null;
+      if (synthTimer) {
+        clearInterval(synthTimer);
+        synthTimer = null;
+      }
+      customAudioEl.pause();
+      if (updateUi) updateMusicButtonsUI();
+    }
+
+    function updateMusicButtonsUI() {
+      const quickBtn = document.getElementById('btn-quick-music');
+      if (activeMusicMode) {
+        quickBtn.textContent = '⏹ Stop Music';
+        quickBtn.classList.add('active-btn');
+      } else {
+        quickBtn.textContent = '🎵 Kids Music';
+        quickBtn.classList.remove('active-btn');
+      }
+    }
+
+    document.getElementById('music-volume').addEventListener('input', (e) => {
+      document.getElementById('vol-label').textContent = `${e.target.value}%`;
+      customAudioEl.volume = getVolumeGainValue();
+    });
+
+    document.getElementById('btn-quick-music').addEventListener('click', () => {
+      if (activeMusicMode) stopAllMusic();
+      else startInbuiltKidsSynth();
+    });
+
+    document.getElementById('btn-play-inbuilt').addEventListener('click', startInbuiltKidsSynth);
+    document.getElementById('btn-test-sfx').addEventListener('click', () => playSfx('fav'));
+    document.getElementById('btn-play-custom-track').addEventListener('click', playCustomMusicTrack);
+    document.getElementById('btn-stop-music').addEventListener('click', () => stopAllMusic());
+
+    const musicModal = document.getElementById('music-modal');
+    document.getElementById('btn-music-modal').addEventListener('click', () => {
+      document.getElementById('custom-music-url').value = store.get('mammaaksa_custom_music_url', '');
+      musicModal.classList.add('open');
+    });
+    document.getElementById('close-music').addEventListener('click', () => musicModal.classList.remove('open'));
+
+    /* ================= SMART TV, QR CODE & PWA INSTALL ================= */
+    const tvModal = document.getElementById('tv-modal');
+
+    function populateTvQr() {
+      const targetUrl = window.location.href.startsWith('http') ? window.location.href : LIVE_APP_URL;
+      const qrImg = document.getElementById('tv-qr-img');
+      qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(targetUrl)}`;
+    }
+
+    function toggleTvMode() {
+      const isTv = document.body.classList.toggle('tv-mode');
+      store.set('mammaaksa_tv_mode', isTv);
+      document.getElementById('btn-tv-layout').classList.toggle('active-btn', isTv);
+      playSfx('nav');
+    }
+
+    if (store.get('mammaaksa_tv_mode', false)) {
+      document.body.classList.add('tv-mode');
+      document.getElementById('btn-tv-layout').classList.add('active-btn');
+    }
+
+    document.getElementById('btn-tv-layout').addEventListener('click', toggleTvMode);
+    document.getElementById('btn-tv-modal').addEventListener('click', () => {
+      populateTvQr();
+      tvModal.classList.add('open');
+    });
+    document.getElementById('btn-open-tv-guide').addEventListener('click', () => {
+      populateTvQr();
+      tvModal.classList.add('open');
+    });
+    document.getElementById('close-tv').addEventListener('click', () => tvModal.classList.remove('open'));
+
+    document.getElementById('btn-copy-tv-url').addEventListener('click', () => {
+      navigator.clipboard?.writeText(LIVE_APP_URL).then(() => {
+        alert('Copied Smart TV link: ' + LIVE_APP_URL);
+      }).catch(() => prompt('Copy this link for your TV:', LIVE_APP_URL));
+    });
+
+    document.getElementById('btn-open-smarttube-search').addEventListener('click', () => {
+      const item = filteredIdioms[currentIndex];
+      const query = encodeURIComponent((item ? item.oromo : 'Oromo mammaaksa') + ' Afaan Oromoo');
+      window.open(`https://www.youtube.com/results?search_query=${query}`, '_blank', 'noopener');
+    });
+
+    // Capture PWA Install prompt for mobile & Android TV
+    let deferredInstallPrompt = null;
+    const installBtn = document.getElementById('btn-install-pwa');
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredInstallPrompt = e;
+      installBtn.style.display = 'inline-flex';
+    });
+    installBtn.addEventListener('click', async () => {
+      if (!deferredInstallPrompt) return;
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      installBtn.style.display = 'none';
+    });
+
+    /* ================= AUTOMATIC ONLINE IDIOMS SYNC ================= */
+    const sourceModal = document.getElementById('source-modal');
+    const sourceForm = document.getElementById('source-form');
+    const sourceMsg = document.getElementById('source-status-msg');
+
+    function deduplicateIdioms(list) {
+      const seen = new Set();
+      return list.filter(item => {
+        if (!item || !item.oromo) return false;
+        const key = (item.id || item.oromo).toLowerCase().trim();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    async function loadIdioms() {
+      const customOnlineUrl = store.get('mammaaksa_online_source_url', '');
+      const cachedRepoIdioms = store.get('mammaaksa_cached_repo_idioms', FALLBACK_IDIOMS);
+      let repoIdioms = cachedRepoIdioms;
+      let extraOnlineIdioms = [];
+      let statusLabel = 'Offline Cache';
+
+      // 1. Automatically fetch latest idioms.json from GitHub live (cache-busted)
+      try {
+        const liveRes = await fetch(`${GITHUB_RAW_IDIOMS_URL}?t=${Date.now()}`, { cache: 'no-store' });
+        if (liveRes.ok) {
+          const parsed = await liveRes.json();
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            repoIdioms = parsed;
+            store.set('mammaaksa_cached_repo_idioms', parsed);
+            statusLabel = `Live Online (${parsed.length})`;
+          }
+        }
+      } catch (err) {
+        // Fallback to relative ./idioms.json if raw GitHub blocked
+        try {
+          const localRes = await fetch(`./idioms.json?t=${Date.now()}`, { cache: 'no-store' });
+          if (localRes.ok) {
+            repoIdioms = await localRes.json();
+            statusLabel = `Local JSON (${repoIdioms.length})`;
+          }
+        } catch (e2) {}
+      }
+
+      // 2. Fetch optional extra custom online JSON feed if configured
+      if (customOnlineUrl) {
+        try {
+          const extraRes = await fetch(`${customOnlineUrl}${customOnlineUrl.includes('?') ? '&' : '?'}t=${Date.now()}`);
+          if (extraRes.ok) {
+            const extraParsed = await extraRes.json();
+            if (Array.isArray(extraParsed)) {
+              extraOnlineIdioms = extraParsed;
+              statusLabel = `Live + Custom (${repoIdioms.length + extraParsed.length})`;
+            }
+          }
+        } catch (err) {
+          sourceMsg.textContent = `Custom URL error: ${err.message}`;
+        }
+      }
+
+      const customLocalData = store.get('mammaaksa_custom_idioms', []);
+      allIdioms = deduplicateIdioms([...customLocalData, ...extraOnlineIdioms, ...repoIdioms]);
+      document.getElementById('source-badge').textContent = statusLabel;
+      renderCategories();
+      applyFilters();
+    }
+
+    document.getElementById('btn-sync-now').addEventListener('click', async () => {
+      playSfx('nav');
+      document.getElementById('source-badge').textContent = 'Syncing...';
+      await loadIdioms();
+    });
+
+    document.getElementById('btn-source-modal').addEventListener('click', () => {
+      document.getElementById('online-idioms-url').value = store.get('mammaaksa_online_source_url', '');
+      sourceModal.classList.add('open');
+    });
+    document.getElementById('close-source').addEventListener('click', () => sourceModal.classList.remove('open'));
+
+    sourceForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const url = document.getElementById('online-idioms-url').value.trim();
+      store.set('mammaaksa_online_source_url', url);
+      sourceMsg.textContent = 'Syncing online idioms...';
+      await loadIdioms();
+      sourceMsg.textContent = `Synced! Total idioms available: ${allIdioms.length}`;
+    });
+
+    document.getElementById('btn-clear-online-source').addEventListener('click', async () => {
+      store.set('mammaaksa_online_source_url', '');
+      document.getElementById('online-idioms-url').value = '';
+      sourceMsg.textContent = 'Reset to automatic GitHub online feed.';
+      await loadIdioms();
+    });
+
+    /* ================= FLASHCARDS, FILTERS & LOCAL STORAGE ================= */
     function getArtworkSVG(type) {
       const svgs = {
         "odaa-assembly": `<svg viewBox="0 0 400 300" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"><circle cx="200" cy="110" r="85" fill="#2E5A44"/><rect x="186" y="160" width="28" height="110" fill="#8D4925"/><path d="M40 270 Q200 220 360 270" stroke="#7A5900" stroke-width="10" fill="none"/></svg>`,
@@ -731,23 +1310,8 @@
       return svgs[type] || svgs["default"];
     }
 
-    async function loadIdioms() {
-      try {
-        const res = await fetch('./idioms.json');
-        if (!res.ok) throw new Error('Network response failed');
-        const repoData = await res.json();
-        const customData = store.get('mammaaksa_custom_idioms', []);
-        allIdioms = [...repoData, ...customData];
-      } catch (e) {
-        const customData = store.get('mammaaksa_custom_idioms', []);
-        allIdioms = [...FALLBACK_IDIOMS, ...customData];
-      }
-      renderCategories();
-      applyFilters();
-    }
-
     function renderCategories() {
-      const cats = ["All", ...new Set(allIdioms.map(i => i.category))];
+      const cats = ["All", ...new Set(allIdioms.map(i => i.category).filter(Boolean))];
       const container = document.getElementById('category-chips');
       container.innerHTML = cats.map(c =>
         `<button class="chip ${c === selectedCategory ? 'active' : ''}" data-cat="${c}">${c}</button>`
@@ -755,6 +1319,7 @@
 
       container.querySelectorAll('.chip').forEach(btn => {
         btn.addEventListener('click', () => {
+          playSfx('nav');
           selectedCategory = btn.dataset.cat;
           renderCategories();
           applyFilters();
@@ -767,8 +1332,8 @@
       filteredIdioms = allIdioms.filter(item => {
         const matchesCat = selectedCategory === "All" || item.category === selectedCategory;
         const matchesQ = !q ||
-          item.oromo.toLowerCase().includes(q) ||
-          item.englishEquivalent.toLowerCase().includes(q) ||
+          (item.oromo && item.oromo.toLowerCase().includes(q)) ||
+          (item.englishEquivalent && item.englishEquivalent.toLowerCase().includes(q)) ||
           (item.culturalContext && item.culturalContext.toLowerCase().includes(q));
         return matchesCat && matchesQ;
       });
@@ -791,7 +1356,7 @@
       const item = filteredIdioms[currentIndex];
       counter.textContent = `Card ${currentIndex + 1} of ${filteredIdioms.length}`;
 
-      document.getElementById('front-category').textContent = item.category;
+      document.getElementById('front-category').textContent = item.category || "Mammaaksa";
       document.getElementById('front-oromo').textContent = item.oromo;
       document.getElementById('front-phonetic').textContent = item.phonetic || "";
       document.getElementById('back-dialect').textContent = item.dialect || "Pan-Oromo";
@@ -834,12 +1399,14 @@
       const now = Date.now();
       if (now - lastTap < 320) {
         flipCardEl.classList.toggle('flipped');
+        playSfx('flip');
       }
       lastTap = now;
     });
 
     document.getElementById('btn-flip-explicit').addEventListener('click', () => {
       flipCardEl.classList.toggle('flipped');
+      playSfx('flip');
     });
 
     document.getElementById('btn-like').addEventListener('click', (e) => {
@@ -849,6 +1416,7 @@
       const reactions = store.get('mammaaksa_reactions', {});
       reactions[item.id] = reactions[item.id] === 'like' ? null : 'like';
       store.set('mammaaksa_reactions', reactions);
+      playSfx('fav');
       renderCard();
     });
 
@@ -859,6 +1427,7 @@
       const reactions = store.get('mammaaksa_reactions', {});
       reactions[item.id] = reactions[item.id] === 'dislike' ? null : 'dislike';
       store.set('mammaaksa_reactions', reactions);
+      playSfx('tap');
       renderCard();
     });
 
@@ -869,50 +1438,74 @@
       let favs = store.get('mammaaksa_favs', []);
       favs = favs.includes(item.id) ? favs.filter(id => id !== item.id) : [item.id, ...favs];
       store.set('mammaaksa_favs', favs);
+      playSfx('fav');
       renderCard();
     });
 
     document.getElementById('btn-prev').addEventListener('click', () => {
       if (!filteredIdioms.length) return;
       currentIndex = (currentIndex - 1 + filteredIdioms.length) % filteredIdioms.length;
+      playSfx('nav');
       renderCard();
     });
 
     document.getElementById('btn-next').addEventListener('click', () => {
       if (!filteredIdioms.length) return;
       currentIndex = (currentIndex + 1) % filteredIdioms.length;
+      playSfx('nav');
       renderCard();
     });
 
     document.getElementById('btn-random').addEventListener('click', () => {
       if (filteredIdioms.length < 2) return;
       currentIndex = Math.floor(Math.random() * filteredIdioms.length);
+      playSfx('flip');
       renderCard();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (document.querySelector('.modal-backdrop.open')) return;
+      if (e.key === 'ArrowRight') document.getElementById('btn-next').click();
+      if (e.key === 'ArrowLeft') document.getElementById('btn-prev').click();
+      if (e.key === 'Enter' || e.key === ' ') {
+        flipCardEl.classList.toggle('flipped');
+        playSfx('flip');
+      }
     });
 
     document.getElementById('btn-zoom-in').addEventListener('click', () => {
       zoomLevel = Math.min(1.2, +(zoomLevel + 0.05).toFixed(2));
       document.documentElement.style.setProperty('--zoom-scale', zoomLevel);
+      playSfx('tap');
     });
 
     document.getElementById('btn-zoom-out').addEventListener('click', () => {
       zoomLevel = Math.max(0.85, +(zoomLevel - 0.05).toFixed(2));
       document.documentElement.style.setProperty('--zoom-scale', zoomLevel);
+      playSfx('tap');
     });
 
+    // Pronunciation with Web Audio rhythmic chime fallback
     document.getElementById('btn-speak').addEventListener('click', (e) => {
       e.stopPropagation();
       const item = filteredIdioms[currentIndex];
-      if (!item || !('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(item.oromo);
-      utter.rate = 0.85;
-      window.speechSynthesis.speak(utter);
+      if (!item) return;
+
+      playSfx('fav');
+      if ('speechSynthesis' in window) {
+        try {
+          window.speechSynthesis.cancel();
+          const utter = new SpeechSynthesisUtterance(item.oromo);
+          utter.rate = 0.85;
+          window.speechSynthesis.speak(utter);
+        } catch (err) {}
+      }
     });
 
     document.getElementById('btn-save-img').addEventListener('click', () => {
       const item = filteredIdioms[currentIndex];
       if (!item) return;
+      playSfx('fav');
       const canvas = document.createElement('canvas');
       canvas.width = 1080;
       canvas.height = 1080;
@@ -928,7 +1521,7 @@
 
       ctx.fillStyle = '#8D4925';
       ctx.font = 'bold 28px sans-serif';
-      ctx.fillText(item.category.toUpperCase(), 110, 145);
+      ctx.fillText((item.category || 'Mammaaksa').toUpperCase(), 110, 145);
 
       ctx.fillStyle = '#221A15';
       ctx.font = 'bold 54px sans-serif';
@@ -944,7 +1537,7 @@
 
       ctx.fillStyle = '#8D4925';
       ctx.font = 'bold 24px sans-serif';
-      ctx.fillText('Mammaaksa — Oromo Idioms Cultural Explorer', 110, 955);
+      ctx.fillText('Mammaaksa — berisogit.github.io/mammaaksa-oromo-idioms', 110, 955);
 
       const link = document.createElement('a');
       link.download = `${item.id || 'mammaaksa-card'}.png`;
@@ -973,9 +1566,9 @@
       const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       html.setAttribute('data-theme', next);
       store.set('mammaaksa_theme', next);
+      playSfx('tap');
     });
-    const savedTheme = store.get('mammaaksa_theme', 'light');
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.documentElement.setAttribute('data-theme', store.get('mammaaksa_theme', 'light'));
 
     document.getElementById('search-input').addEventListener('input', applyFilters);
 
@@ -1077,13 +1670,14 @@
       selectedCategory = "All";
       renderCategories();
       applyFilters();
+      playSfx('fav');
       e.target.reset();
       addModal.classList.remove('open');
     });
 
     function updateOnlineStatus() {
       const pill = document.getElementById('network-status');
-      pill.textContent = navigator.onLine ? '● Online & Cached' : '● Offline Mode';
+      pill.textContent = navigator.onLine ? '● Online' : '● Offline';
     }
     window.addEventListener('online', updateOnlineStatus);
     window.addEventListener('offline', updateOnlineStatus);
@@ -1091,7 +1685,7 @@
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(err => console.warn('SW error:', err));
+        navigator.serviceWorker.register('./sw.js').then(reg => reg.update()).catch(() => {});
       });
     }
 
